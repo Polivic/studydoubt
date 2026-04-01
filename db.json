@@ -1,0 +1,41 @@
+{
+  "doubts": [
+    {
+      "title": "Não entendi props",
+      "subject": "React",
+      "priority": "Alta",
+      "description": "Quero revisar props e componentes",
+      "createdAt": "2026-04-01",
+      "resolved": true,
+      "id": "lCZrgJgtZNo"
+    },
+    {
+      "title": "Não entendo laço de repetição (for)",
+      "subject": "Algoritmos",
+      "priority": "Média",
+      "description": "Não sei quando usar e como montar a estrutura corretamente",
+      "createdAt": "2026-04-01",
+      "resolved": false,
+      "id": "b_0lkELZ3w8"
+    },
+    {
+      "title": "Erro ao usar JOIN no SQL",
+      "subject": "Banco de Dados",
+      "priority": "Alta",
+      "description": "stou tentando juntar duas tabelas, mas os dados não aparecem corretamente",
+      "createdAt": "2026-04-01",
+      "resolved": false,
+      "id": "9Ou03fbz_Uk"
+    },
+    {
+      "title": "Diferença entre let, const e var",
+      "subject": "JavaScript",
+      "priority": "Baixa",
+      "description": "Quero entender quando usar cada tipo de variável e qual a diferença entre elas",
+      "createdAt": "2026-04-01",
+      "resolved": false,
+      "id": "aeQ5nVpd9Nw"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
