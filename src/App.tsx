@@ -34,6 +34,7 @@ function App() {
     try {
       const createdDoubt = await createDoubt(newDoubt);
       setDoubts((prev) => [...prev, createdDoubt]);
+      setError("");
     } catch {
       alert("Erro ao adicionar dúvida.");
     }
@@ -57,10 +58,17 @@ function App() {
     const confirmed = window.confirm(
       "Tem certeza que deseja excluir esta dúvida?"
     );
+
     if (!confirmed) return;
 
     try {
       setDoubts((prev) => prev.filter((item) => item.id !== id));
+    } catch {
+      alert("Erro ao excluir dúvida.");
+      return;
+    }
+
+    try {
       await deleteDoubt(id);
     } catch {
       alert("Erro ao excluir dúvida.");
@@ -134,51 +142,60 @@ function App() {
           </div>
 
           {loading && <p className="message">Carregando...</p>}
-          {error && <p className="message error">{error}</p>}
-          {!loading && filteredDoubts.length === 0 && (
-            <p className="message">Nenhuma dúvida encontrada</p>
+
+          {!loading && error && <p className="message error">{error}</p>}
+
+          {!loading && !error && filteredDoubts.length === 0 && (
+            <div className="empty-state">
+              <p className="message">Nenhuma dúvida encontrada</p>
+            </div>
           )}
 
-          <ul className="doubt-list">
-            {filteredDoubts.map((doubt) => (
-              <li key={doubt.id} className="doubt-card">
-                <div className="doubt-content">
-                  <h3>{doubt.title}</h3>
-                  <p>
-                    <strong>Matéria:</strong> {doubt.subject}
-                  </p>
-                  <p>
-                    <strong>Prioridade:</strong> {doubt.priority}
-                  </p>
-                  <p>
-                    <strong>Status:</strong>{" "}
-                    <span
-                      className={
-                        doubt.resolved ? "status resolved" : "status pending"
-                      }
+          {!loading && !error && filteredDoubts.length > 0 && (
+            <ul className="doubt-list">
+              {filteredDoubts.map((doubt) => (
+                <li key={doubt.id} className="doubt-card">
+                  <div className="doubt-content">
+                    <h3>{doubt.title}</h3>
+
+                    <p>
+                      <strong>Matéria:</strong> {doubt.subject}
+                    </p>
+
+                    <p>
+                      <strong>Prioridade:</strong> {doubt.priority}
+                    </p>
+
+                    <p>
+                      <strong>Status:</strong>{" "}
+                      <span
+                        className={
+                          doubt.resolved ? "status resolved" : "status pending"
+                        }
+                      >
+                        {doubt.resolved ? "Resolvida" : "Pendente"}
+                      </span>
+                    </p>
+                  </div>
+
+                  <div className="card-actions">
+                    <button onClick={() => handleToggleResolved(doubt)}>
+                      {doubt.resolved
+                        ? "Marcar como pendente"
+                        : "Marcar como resolvida"}
+                    </button>
+
+                    <button
+                      className="delete-button"
+                      onClick={() => handleDeleteDoubt(doubt.id)}
                     >
-                      {doubt.resolved ? "Resolvida" : "Pendente"}
-                    </span>
-                  </p>
-                </div>
-
-                <div className="card-actions">
-                  <button onClick={() => handleToggleResolved(doubt)}>
-                    {doubt.resolved
-                      ? "Marcar como pendente"
-                      : "Marcar como resolvida"}
-                  </button>
-
-                  <button
-                    className="delete-button"
-                    onClick={() => handleDeleteDoubt(doubt.id)}
-                  >
-                    Excluir
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
+                      Excluir
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
       </section>
     </main>

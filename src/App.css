@@ -5,9 +5,9 @@
 }
 
 body {
-  background-color: #f4f7fb;
+  background: linear-gradient(180deg, #fdf7ff 0%, #f9f0ff 100%);
   font-family: "Inter", sans-serif;
-  color: #1f2937;
+  color: #4b3b52;
 }
 
 .app {
@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
 }
 
@@ -27,13 +27,13 @@ body {
 
 .header h1 {
   font-size: 2.2rem;
-  margin-bottom: 4px;
-  color: #3461c0;
+  margin-bottom: 6px;
+  color: #9b5de5;
 }
 
 .header p {
-  font-size: 0.9rem;
-  color: #6b7280;
+  font-size: 0.95rem;
+  color: #7b6d85;
 }
 
 /* RESUMO */
@@ -45,40 +45,51 @@ body {
 }
 
 .summary-card {
-  background-color: #ffffff;
-  border-radius: 16px;
+  background: linear-gradient(135deg, #f8e8ff 0%, #fcefff 100%);
+  border: 1px solid #efd6ff;
+  border-radius: 18px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(190, 140, 220, 0.12);
 }
 
 .summary-card span {
   display: block;
   font-size: 0.95rem;
-  color: #6b7280;
+  color: #8a7298;
   margin-bottom: 8px;
 }
 
 .summary-card strong {
   font-size: 1.8rem;
-  color: #111827;
+  color: #8f4fd3;
 }
 
+/* BLOCOS */
 .form-section,
 .list-section {
-  background-color: #ffffff;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background-color: rgba(255, 255, 255, 0.92);
+  border: 1px solid #f0ddff;
+  border-radius: 20px;
+  padding: 32px 24px;
+  box-shadow: 0 10px 28px rgba(196, 151, 224, 0.12);
   margin-bottom: 24px;
 }
 
-.form-section h2,
-.list-section h2 {
+.form-section h2 {
   margin-bottom: 20px;
-  font-size: 1.4rem;
-  color: #111827;
+  font-size: 1.35rem;
+  color: #8f4fd3;
+  text-align: center;
 }
+
+.list-section h2 {
+  margin-bottom: 24px;
+  font-size: 1.35rem;
+  color: #8f4fd3;
+  text-align: center;
+}
+
 
 form {
   display: flex;
@@ -94,23 +105,26 @@ form div {
 label {
   font-weight: 600;
   margin-bottom: 6px;
-  color: #374151;
+  color: #6f5b7c;
 }
 
 input,
 select,
 textarea {
   padding: 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
+  border: 1px solid #e6cfff;
+  border-radius: 12px;
   font-size: 1rem;
   outline: none;
+  background-color: #fffafd;
+  color: #4b3b52;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: #6366f1;
+  border-color: #d291ff;
+  box-shadow: 0 0 0 3px rgba(210, 145, 255, 0.15);
 }
 
 textarea {
@@ -118,23 +132,75 @@ textarea {
   min-height: 90px;
 }
 
+
 button {
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 12px 16px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  background-color: #4f46e5;
+  background: linear-gradient(90deg, #c77dff 0%, #ff9ecf 100%);
   color: white;
   transition: all 0.2s ease;
 }
 
 button:hover {
-  background-color: #4338ca;
-  opacity: 0.9;
-  transform: scale(1.03);
+  opacity: 0.95;
+  transform: translateY(-1px) scale(1.02);
 }
+
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-buttons button {
+  min-width: 130px;
+  padding: 12px 18px;
+  background: #f3ddff;
+  color: #7d4ca5;
+  border: 1px solid #e5c6ff;
+  border-radius: 14px;
+}
+
+.filter-buttons button:hover {
+  background: #edd0ff;
+}
+
+.filter-buttons .active-filter {
+  background: linear-gradient(90deg, #c77dff 0%, #ff9ecf 100%);
+  color: white;
+  border: none;
+}
+
+
+.message {
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background-color: #fff7fc;
+  color: #7b6d85;
+  border: 1px solid #f3d8ea;
+}
+
+.message.error {
+  color: #d14d8b;
+  background-color: #fff0f6;
+  border: 1px solid #f7c2d8;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 12px 0 4px;
+}
+
 
 .doubt-list {
   list-style: none;
@@ -144,32 +210,33 @@ button:hover {
 }
 
 .doubt-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
+  border: 1px solid #f0ddff;
+  border-radius: 18px;
   padding: 18px;
-  background-color: #f9fafb;
+  background: linear-gradient(135deg, #fffaff 0%, #fdf4ff 100%);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
   transition: all 0.2s ease;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(196, 151, 224, 0.08);
 }
 
 .doubt-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(196, 151, 224, 0.16);
 }
 
 .doubt-content h3 {
   margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: #111827;
+  font-size: 1.15rem;
+  color: #7f4ab8;
 }
 
 .doubt-content p {
   margin-bottom: 6px;
-  color: #4b5563;
+  color: #6b5b74;
 }
 
 .status {
@@ -177,11 +244,11 @@ button:hover {
 }
 
 .status.resolved {
-  color: #16a34a;
+  color: #9b59b6;
 }
 
 .status.pending {
-  color: #dc2626;
+  color: #e06aa3;
 }
 
 .card-actions {
@@ -192,25 +259,17 @@ button:hover {
 }
 
 .delete-button {
-  background-color: #dc2626;
+  background: linear-gradient(90deg, #ff8fb1 0%, #ff6fa3 100%);
 }
 
 .delete-button:hover {
-  background-color: #b91c1c;
+  opacity: 0.95;
 }
 
-.message {
-  margin-bottom: 16px;
-  color: #4b5563;
-}
-
-.message.error {
-  color: #dc2626;
-}
 
 @media (max-width: 700px) {
   .header h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   .summary-section {
@@ -226,24 +285,11 @@ button:hover {
     min-width: unset;
   }
 
-.filter-buttons {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
+  .filter-buttons {
+    justify-content: center;
+  }
 
-.filter-buttons button {
-  background-color: #e5e7eb;
-  color: #111827;
-}
-
-.filter-buttons button:hover {
-  background-color: #d1d5db;
-}
-
-.filter-buttons .active-filter {
-  background-color: #4f46e5;
-  color: white;
-}
+  .filter-buttons button {
+    width: 100%;
+  }
 }
